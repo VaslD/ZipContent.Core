@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using System.Threading.Tasks;
 
 namespace ZipContent.Core.Test
@@ -7,7 +8,7 @@ namespace ZipContent.Core.Test
     public class GivenValidZipFile
     {
         private readonly IZipContentLister _lister;
-      
+
         public GivenValidZipFile()
         {
             _lister = new ZipContentLister();
@@ -18,16 +19,15 @@ namespace ZipContent.Core.Test
         {
             var partialReader = new PartialFileReader("ZipFiles", "foo.zip");
             var content = await _lister.GetContents(partialReader);
-            Assert.AreEqual(content.Count, 1);        
+            Assert.AreEqual(content.Count, 1);
         }
 
         [TestMethod]
         public async Task ShouldHaveExpectedFileName()
         {
-
             var partialReader = new PartialFileReader("ZipFiles", "foo.zip");
-            var content = await _lister.GetContents(partialReader);           
-            
+            var content = await _lister.GetContents(partialReader);
+
             Assert.AreEqual(content[0].FullName, "foo.txt");
         }
     }

@@ -26,7 +26,7 @@ namespace ZipContent.Core
             int headerPos = Search(headerBytes, localFileHeader);
 
             if (headerPos == -1)
-                throw new FileIsNotaZipException();
+                throw new InvalidZipFileException();
 
 
             var endingBytes = await partialReader.GetBytes(new ByteRange(length - readLength, length));

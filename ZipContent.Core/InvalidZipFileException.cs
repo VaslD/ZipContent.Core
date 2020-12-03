@@ -2,7 +2,7 @@
 
 namespace ZipContent.Core
 {
-    public class FileIsNotaZipException: Exception
+    public class InvalidZipFileException: Exception
     {
     }
 }
